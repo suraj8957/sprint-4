@@ -1,8 +1,39 @@
 # Terraform Drift - POC
 
 ---
+## Document Details
 
-## Introduction
+| Author | Created on | Version | Last updated by | Last edited on | Pre Reviewer | L0 Reviewer | L1 Reviewer | L2 Reviewer |
+|--------|------------|---------|-----------------|----------------|--------------|-------------|-------------|-------------|
+| Suraj Tripathi | 11-04-2026 | v1.0 | Suraj Tripathi | 11-04-2026 |              | Aniruddh    | Shreya S    | Ashwani     |
+
+---
+## Table of Contents
+
+- [1. Introduction](#1-introduction)
+- [2. Objective](#2-objective)
+- [3. What is Terraform Drift?](#3-what-is-terraform-drift)
+- [4. Architecture Overview](#4-architecture-overview)
+- [5. Prerequisites](#5-prerequisites)
+- [6. Project Structure](#6-project-structure)
+- [7. Step-by-Step Implementation](#7-step-by-step-implementation)
+  - [Step 1: Initialize Terraform](#step-1-initialize-terraform)
+  - [Step 2: Create Infrastructure](#step-2-create-infrastructure)
+  - [Step 3: Verify Resource](#step-3-verify-resource)
+  - [Step 4: Introduce Drift (Manual Change)](#step-4-introduce-drift-manual-change)
+  - [Step 5: Detect Drift](#step-5-detect-drift)
+  - [Step 6: Fix Drift (Optional)](#step-6-fix-drift-optional)
+- [8. Key Terraform Concepts](#8-key-terraform-concepts)
+- [9. State & Lock File Explanation](#9-state--lock-file-explanation)
+- [10. Advanced Concepts](#10-advanced-concepts)
+- [11. Best Practices](#11-best-practices)
+- [12. Contact Information](#12-contact-information)
+- [13. References](#13-references)
+
+
+---
+
+## 1. Introduction
 
 This project demonstrates Terraform Drift Detection using a practical Proof of Concept (POC).
 
@@ -10,7 +41,7 @@ Terraform is an Infrastructure as Code (IaC) tool that allows you to define and 
 
 ---
 
-## Objective
+## 2. Objective
 
 The goal of this POC is to:
 
@@ -21,7 +52,7 @@ The goal of this POC is to:
 
 ---
 
-## What is Terraform Drift?
+## 3. What is Terraform Drift?
 
 Terraform Drift occurs when:
 
@@ -35,7 +66,7 @@ This mismatch is called Drift
 
 ---
 
-## Architecture Overview
+## 4. Architecture Overview
 
 - AWS EC2 Instance created via Terraform
 - Manual modification via AWS Console
@@ -43,7 +74,7 @@ This mismatch is called Drift
 
 ---
 
-## Prerequisites
+## 5. Prerequisites
 
 Before starting, ensure you have:
 
@@ -54,7 +85,7 @@ Before starting, ensure you have:
 
 ---
 
-## Project Structure
+## 6. Project Structure
 ```
 terraform-drift-poc/
 │
@@ -67,7 +98,7 @@ terraform-drift-poc/
 
 ---
 
-## Step-by-Step Implementation
+## 7. Step-by-Step Implementation
 
 ### Step 1: Initialize Terraform
 
@@ -119,17 +150,17 @@ Terraform will:
 - Reconfigure the resource to match the code
 
 ---
-## Key Terraform Concepts
+## 8. Key Terraform Concepts
 
 | Concept        | Description                                                                 |
 |----------------|-----------------------------------------------------------------------------|
 | Desired State  | Defined in `.tf` files. Represents how your infrastructure *should* look.   |
-| Current State  | Stored in `terraform.tfstate`. Represents actual deployed infrastructure.   |
+| Current State  | Stored in `terraform.tfstate`. It represents the actual deployed infrastructure.   |
 | Drift          | Difference between the desired state and the actual infrastructure.         |
 
 ---
 
-## State & Lock File Explanation
+## 9. State & Lock File Explanation
 
 | File Name              | Description                                                                |
 |-----------------------|-----------------------------------------------------------------------------|
@@ -142,7 +173,7 @@ Terraform will:
 
 ---
 
-## Advanced Concepts
+## 10. Advanced Concepts
 
 | Topic                          | Description                                                                |
 |--------------------------------|----------------------------------------------------------------------------|
@@ -158,7 +189,7 @@ Terraform will:
 | Alternative Tools              | AWS Config, Spacelift, Atlantis                                            |
 
 ---
-## Best Practices
+## 11. Best Practices
 
 - Avoid manual changes in the cloud
 - Always use Terraform for updates
@@ -167,8 +198,17 @@ Terraform will:
 - Regularly run terraform plan
 
 ---
+## 12. Contact Information
 
-## References
+| Contact Type | Details                                                             |
+| ------------ | ------------------------------------------------------------------- |
+| Name         | Suraj Tripathi                                                      |
+| Role         | DevOps Trainee                                                      |
+| Email        | [suraj.tripathi.snaatak@mygurukulam.co](mailto:suraj.tripathi.snaatak@mygurukulam.co) |
+
+---
+
+## 13. References
 
 | Topic                                  | Link                                                                 |
 |----------------------------------------|----------------------------------------------------------------------|
