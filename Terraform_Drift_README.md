@@ -4,9 +4,9 @@
 
 ## Introduction
 
-This project demonstrates **Terraform Drift Detection** using a practical Proof of Concept (POC).
+This project demonstrates Terraform Drift Detection using a practical Proof of Concept (POC).
 
-Terraform is an Infrastructure as Code (IaC) tool that allows you to define and manage infrastructure in a declarative way. However, when changes are made manually outside Terraform (e.g., via AWS Console), the actual infrastructure may deviate from the defined configuration. This is called **Terraform Drift**.
+Terraform is an Infrastructure as Code (IaC) tool that allows you to define and manage infrastructure in a declarative way. However, when changes are made manually outside Terraform (e.g., via AWS Console), the actual infrastructure may deviate from the defined configuration. This is called Terraform Drift.
 
 ---
 
@@ -31,7 +31,7 @@ The **actual infrastructure state** ≠ **Terraform configuration (desired state
 - Terraform defines EC2 instance as `t2.micro`
 - Someone manually changes it to `t2.large` in AWS Console
 
-This mismatch is called **Drift**
+This mismatch is called Drift
 
 ---
 
