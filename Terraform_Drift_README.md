@@ -105,6 +105,8 @@ Now simulate drift:
 terraform plan
 ```
 **Expected Output:**
+<img width="1189" height="970" alt="image" src="https://github.com/user-attachments/assets/e6c031f1-1b31-454a-93c1-9dab40460420" />
+
 
 ### Step 6: Fix Drift (Optional)
 To revert the infrastructure to the desired state:
