@@ -1,45 +1,79 @@
 # Ansible Role & Playbook CI/CD Shared Library Documentation
 
+## Document Details
+
+| Author | Created on | Version | Last updated by | Last edited on | Pre Reviewer | L0 Reviewer | L1 Reviewer | L2 Reviewer |
+|--------|------------|---------|-----------------|----------------|--------------|-------------|-------------|-------------|
+| Suraj Tripathi | 13-04-2026 | v1.0 | Suraj Tripathi | 13-04-2026 |              | Aniruddh    | Shreya S    | Ashwani     |
+
+
 ## Table of Contents
 
-- Overview
-- Objectives
-- Architecture
-- Repository Structure
-- Prerequisites
-- Ansible Basics
-- What is Ansible Role?
-- What is Ansible Playbook?
-- CI/CD Workflow Overview
-- Shared Library Purpose
-- Shared Library Functions
-  - checkoutCode()
-  - installDependencies()
-  - ansibleLint()
-  - syntaxCheck()
-  - dryRun()
-  - runPlaybook()
-  - inventoryValidation()
-  - securityScan()
-- Jenkins CI Pipeline
-- Jenkins CD Pipeline
-- Sample Jenkinsfile (CI)
-- Sample Jenkinsfile (CD)
-- Inputs and Outputs
-- Variables and Parameters
-- Inventory Management
-- Ansible Vault Integration
-- Secrets Management
-- Error Handling
-- Rollback Strategy
-- Notifications Integration
-- Testing Strategy
-- Security Best Practices
-- Troubleshooting
-- Known Limitations
-- Best Practices
-- References
+- [Introduction](#introduction)
+- [Purpose](#purpose)
+- [Scope](#scope)
+- [Features](#features)
+- [Architecture Overview](#architecture-overview)
+  - [CI Flow](#ci-flow)
+  - [CD Flow](#cd-flow)
+- [Repository Structure](#repository-structure)
+- [Prerequisites](#prerequisites)
+- [Ansible Fundamentals](#ansible-fundamentals)
+  - [What is Ansible](#what-is-ansible)
+  - [What is a Playbook](#what-is-a-playbook)
+  - [What is a Role](#what-is-a-role)
+- [Roles and Playbook Standards](#roles-and-playbook-standards)
 
+- [CI/CD Workflow](#cicd-workflow)
+  - [CI Tasks](#ci-tasks)
+  - [CD Tasks](#cd-tasks)
+
+- [Shared Library Purpose](#shared-library-purpose)
+
+- [Shared Library Functions](#shared-library-functions)
+  - [checkoutCode()](#checkoutcode)
+  - [installDependencies()](#installdependencies)
+  - [ansibleLint()](#ansiblelint)
+  - [syntaxCheck()](#syntaxcheck)
+  - [dryRun()](#dryrun)
+  - [runPlaybook()](#runplaybook)
+  - [inventoryValidation()](#inventoryvalidation)
+  - [securityScan()](#securityscan)
+
+- [Jenkins CI Pipeline](#jenkins-ci-pipeline)
+- [Jenkins CD Pipeline](#jenkins-cd-pipeline)
+- [Sample Jenkinsfile (CI)](#sample-jenkinsfile-ci)
+- [Sample Jenkinsfile (CD)](#sample-jenkinsfile-cd)
+
+- [Inputs and Outputs](#inputs-and-outputs)
+- [Variables and Parameters](#variables-and-parameters)
+- [Inventory Management](#inventory-management)
+- [Environment Promotion Strategy](#environment-promotion-strategy)
+
+- [Ansible Vault Integration](#ansible-vault-integration)
+- [Secrets Management](#secrets-management)
+
+- [Quality Gates](#quality-gates)
+- [Security Controls](#security-controls)
+- [Reusable Role Standards](#reusable-role-standards)
+
+- [Branching Strategy](#branching-strategy)
+
+- [Error Handling](#error-handling)
+- [Rollback Strategy](#rollback-strategy)
+
+- [Notifications Integration](#notifications-integration)
+- [Notifications and Monitoring](#notifications-and-monitoring)
+
+- [Testing Strategy](#testing-strategy)
+- [Security Best Practices](#security-best-practices)
+
+- [Troubleshooting](#troubleshooting)
+- [Known Limitations](#known-limitations)
+- [Best Practices](#best-practices)
+
+- [References](#references)
+- [Summary](#summary)
 ---
 
 # Overview
