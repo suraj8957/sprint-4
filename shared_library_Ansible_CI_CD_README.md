@@ -9,74 +9,77 @@
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Purpose](#purpose)
-- [Scope](#scope)
-- [Features](#features)
-- [Architecture Overview](#architecture-overview)
+- [Document Details](#document-details)
+- [Overview](#overview)
+- [Objectives](#objectives)
+
+- [Architecture](#architecture)
   - [CI Flow](#ci-flow)
   - [CD Flow](#cd-flow)
+
 - [Repository Structure](#repository-structure)
 - [Prerequisites](#prerequisites)
-- [Ansible Fundamentals](#ansible-fundamentals)
-  - [What is Ansible](#what-is-ansible)
-  - [What is a Playbook](#what-is-a-playbook)
-  - [What is a Role](#what-is-a-role)
-- [Roles and Playbook Standards](#roles-and-playbook-standards)
 
-- [CI/CD Workflow](#cicd-workflow)
+- [Ansible Basics](#ansible-basics)
+  - [Ad Hoc Command](#ad-hoc-command)
+  - [Simple Playbook](#simple-playbook)
+
+- [What is Ansible Role?](#what-is-ansible-role)
+- [What is Ansible Playbook?](#what-is-ansible-playbook)
+
+- [CI/CD Workflow Overview](#cicd-workflow-overview)
   - [CI Tasks](#ci-tasks)
   - [CD Tasks](#cd-tasks)
 
 - [Shared Library Purpose](#shared-library-purpose)
 
 - [Shared Library Functions](#shared-library-functions)
-  - [checkoutCode()](#checkoutcode)
-  - [installDependencies()](#installdependencies)
-  - [ansibleLint()](#ansiblelint)
-  - [syntaxCheck()](#syntaxcheck)
-  - [dryRun()](#dryrun)
-  - [runPlaybook()](#runplaybook)
-  - [inventoryValidation()](#inventoryvalidation)
-  - [securityScan()](#securityscan)
+  - [checkoutCode](#checkoutcode)
+  - [installDependencies](#installdependencies)
+  - [ansibleLint](#ansiblelint)
+  - [syntaxCheck](#syntaxcheck)
+  - [dryRun](#dryrun)
+  - [runPlaybook](#runplaybook)
+  - [inventoryValidation](#inventoryvalidation)
+  - [securityScan](#securityscan)
 
 - [Jenkins CI Pipeline](#jenkins-ci-pipeline)
 - [Jenkins CD Pipeline](#jenkins-cd-pipeline)
+
 - [Sample Jenkinsfile (CI)](#sample-jenkinsfile-ci)
 - [Sample Jenkinsfile (CD)](#sample-jenkinsfile-cd)
 
 - [Inputs and Outputs](#inputs-and-outputs)
+  - [Outputs](#outputs)
+
 - [Variables and Parameters](#variables-and-parameters)
 - [Inventory Management](#inventory-management)
-- [Environment Promotion Strategy](#environment-promotion-strategy)
-
 - [Ansible Vault Integration](#ansible-vault-integration)
 - [Secrets Management](#secrets-management)
-
-- [Quality Gates](#quality-gates)
-- [Security Controls](#security-controls)
-- [Reusable Role Standards](#reusable-role-standards)
-
-- [Branching Strategy](#branching-strategy)
 
 - [Error Handling](#error-handling)
 - [Rollback Strategy](#rollback-strategy)
 
 - [Notifications Integration](#notifications-integration)
-- [Notifications and Monitoring](#notifications-and-monitoring)
 
 - [Testing Strategy](#testing-strategy)
 - [Security Best Practices](#security-best-practices)
 
 - [Troubleshooting](#troubleshooting)
+  - [Permission Denied](#permission-denied)
+  - [Inventory Issue](#inventory-issue)
+  - [Syntax Errors](#syntax-errors)
+  - [Debug](#debug)
+
 - [Known Limitations](#known-limitations)
 - [Best Practices](#best-practices)
 
+- [Contact Information](#contact-information)
 - [References](#references)
 - [Summary](#summary)
 ---
 
-# Overview
+## Overview
 
 This shared library provides reusable CI/CD automation for **Ansible Roles** and **Ansible Playbooks** using Jenkins.
 
@@ -101,7 +104,7 @@ Supports:
 
 ---
 
-# Objectives
+## Objectives
 
 The goal of this shared library is to:
 
@@ -114,9 +117,9 @@ The goal of this shared library is to:
 
 ---
 
-# Architecture
+## Architecture
 
-## CI Flow
+### CI Flow
 
 ```text
 Developer Commit
@@ -144,7 +147,7 @@ Success/Failure Notification
 
 ---
 
-## CD Flow
+### CD Flow
 
 ```text
 Validated Code
@@ -164,7 +167,7 @@ Notification
 
 ---
 
-# Repository Structure
+## Repository Structure
 
 ```bash
 ansible-project/
@@ -191,7 +194,7 @@ ansible-project/
 
 ---
 
-# Prerequisites
+## Prerequisites
 
 Required:
 
@@ -221,9 +224,9 @@ ansible-playbook --version
 
 ---
 
-# Ansible Basics
+## Ansible Basics
 
-## Ad Hoc Command
+### Ad Hoc Command
 
 ```bash
 ansible all -m ping
@@ -231,7 +234,7 @@ ansible all -m ping
 
 ---
 
-## Simple Playbook
+### Simple Playbook
 
 ```yaml
 ---
@@ -253,7 +256,7 @@ ansible-playbook install-nginx.yml
 
 ---
 
-# What is Ansible Role?
+## What is Ansible Role?
 
 Role organizes automation into reusable structure.
 
@@ -278,7 +281,7 @@ roles:
 
 ---
 
-# What is Ansible Playbook?
+## What is Ansible Playbook?
 
 Playbook is YAML automation instructions.
 
@@ -291,9 +294,9 @@ Can perform:
 
 ---
 
-# CI/CD Workflow Overview
+## CI/CD Workflow Overview
 
-## CI Tasks
+### CI Tasks
 
 Includes:
 
@@ -305,7 +308,7 @@ Includes:
 
 ---
 
-## CD Tasks
+### CD Tasks
 
 Includes:
 
@@ -316,7 +319,7 @@ Includes:
 
 ---
 
-# Shared Library Purpose
+## Shared Library Purpose
 
 Reusable Jenkins shared library provides standardized methods for:
 
@@ -328,11 +331,11 @@ Reusable Jenkins shared library provides standardized methods for:
 
 ---
 
-# Shared Library Functions
+## Shared Library Functions
 
 ---
 
-## checkoutCode()
+### checkoutCode()
 
 Purpose:
 
@@ -353,7 +356,7 @@ checkoutCode(
 
 ---
 
-## installDependencies()
+### installDependencies()
 
 Installs:
 
@@ -366,7 +369,7 @@ installDependencies()
 
 ---
 
-## ansibleLint()
+### ansibleLint()
 
 Lint validation.
 
@@ -382,7 +385,7 @@ ansible-lint playbooks/site.yml
 
 ---
 
-## syntaxCheck()
+### syntaxCheck()
 
 Checks playbook syntax.
 
@@ -401,7 +404,7 @@ ansible-playbook --syntax-check
 
 ---
 
-## dryRun()
+### dryRun()
 
 Runs check mode.
 
@@ -420,7 +423,7 @@ ansible-playbook --check
 
 ---
 
-## runPlaybook()
+### runPlaybook()
 
 Actual deployment.
 
@@ -433,7 +436,7 @@ runPlaybook(
 
 ---
 
-## inventoryValidation()
+### inventoryValidation()
 
 Validate inventory.
 
@@ -449,7 +452,7 @@ ansible-inventory --list
 
 ---
 
-## securityScan()
+### securityScan()
 
 Runs security scanning.
 
@@ -467,7 +470,7 @@ Optional:
 
 ---
 
-# Jenkins CI Pipeline
+## Jenkins CI Pipeline
 
 ```groovy
 @Library('ansible-shared-library') _
@@ -537,7 +540,7 @@ pipeline {
 
 ---
 
-# Jenkins CD Pipeline
+## Jenkins CD Pipeline
 
 ```groovy
 @Library('ansible-shared-library') _
@@ -564,7 +567,7 @@ runPlaybook(
 
 ---
 
-# Sample Jenkinsfile (CI)
+## Sample Jenkinsfile (CI)
 
 ```groovy
 node {
@@ -599,7 +602,7 @@ throw err
 
 ---
 
-# Sample Jenkinsfile (CD)
+## Sample Jenkinsfile (CD)
 
 ```groovy
 node {
@@ -617,7 +620,7 @@ playbooks/site.yml
 
 ---
 
-# Inputs and Outputs
+## Inputs and Outputs
 
 | Input | Description |
 |------|-------------|
@@ -629,7 +632,7 @@ playbooks/site.yml
 
 ---
 
-## Outputs
+### Outputs
 
 | Output | Description |
 |------|-------------|
@@ -639,7 +642,7 @@ playbooks/site.yml
 
 ---
 
-# Variables and Parameters
+## Variables and Parameters
 
 Example:
 
@@ -661,7 +664,7 @@ defaultValue:'site.yml'
 
 ---
 
-# Inventory Management
+## Inventory Management
 
 Example:
 
@@ -677,7 +680,7 @@ Dynamic inventory supported.
 
 ---
 
-# Ansible Vault Integration
+## Ansible Vault Integration
 
 Encrypt secrets:
 
@@ -693,7 +696,7 @@ ansible-playbook --ask-vault-pass
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 Recommended:
 
@@ -710,7 +713,7 @@ Never hardcode:
 
 ---
 
-# Error Handling
+## Error Handling
 
 Example:
 
@@ -727,7 +730,7 @@ catch(err){
 
 ---
 
-# Rollback Strategy
+## Rollback Strategy
 
 Example rollback:
 
@@ -746,7 +749,7 @@ Strategies:
 
 ---
 
-# Notifications Integration
+## Notifications Integration
 
 Slack example:
 
@@ -761,7 +764,7 @@ Email supported too.
 
 ---
 
-# Testing Strategy
+## Testing Strategy
 
 Include:
 
@@ -778,7 +781,7 @@ molecule test
 
 ---
 
-# Security Best Practices
+## Security Best Practices
 
 Use:
 
@@ -797,7 +800,7 @@ Never:
 
 # Troubleshooting
 
-## Permission denied
+### Permission denied
 
 ```bash
 chmod 400 key.pem
@@ -805,7 +808,7 @@ chmod 400 key.pem
 
 ---
 
-## Inventory issue
+### Inventory issue
 
 ```bash
 ansible-inventory --list
@@ -813,7 +816,7 @@ ansible-inventory --list
 
 ---
 
-## Syntax errors
+### Syntax errors
 
 ```bash
 ansible-playbook --syntax-check
@@ -821,7 +824,7 @@ ansible-playbook --syntax-check
 
 ---
 
-## Debug
+### Debug
 
 ```bash
 ansible-playbook -vvv site.yml
@@ -829,7 +832,7 @@ ansible-playbook -vvv site.yml
 
 ---
 
-# Known Limitations
+## Known Limitations
 
 Current limitations:
 
@@ -840,7 +843,7 @@ Current limitations:
 
 ---
 
-# Best Practices
+## Best Practices
 
 Recommended:
 
@@ -854,7 +857,17 @@ Recommended:
 
 ---
 
-# References
+## Contact Information
+
+| Contact Type | Details                                                             |
+| ------------ | ------------------------------------------------------------------- |
+| Name         | Suraj Tripathi                                                      |
+| Role         | DevOps Trainee                                                      |
+| Email        | [suraj.tripathi.snaatak@mygurukulam.co](mailto:suraj.tripathi.snaatak@mygurukulam.co) |
+
+---
+
+## References
 
 | Reference | Link |
 |---------|------|
@@ -868,7 +881,7 @@ Recommended:
 
 ---
 
-# Summary
+## Summary
 
 This shared library supports:
 
